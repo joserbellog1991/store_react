@@ -8,16 +8,19 @@ import ProductList from "../containers/ProductList";
 import Home from "@pages/Home";
 import NotFound from "../pages/NotFound";
 import Header from "../components/Header";
+import useInitialState from "../hooks/useInitialState";
 import AppContext from "@context/AppContext";
 
 
 const App = () => {
 
+    const initialState = useInitialState();
+
     return (
 
    
-        
-        <BrowserRouter>
+        <AppContext.Provider value={initialState}>       
+         <BrowserRouter>
         <Header/>
         <Layout>
             <Routes>
@@ -29,6 +32,7 @@ const App = () => {
             </Routes>
         </Layout>
     </BrowserRouter> 
+    </AppContext.Provider>
 
     );
 
